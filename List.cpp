@@ -12,9 +12,32 @@ class List::Node //self-referential Node class
 	   Node* link = nullptr;
 	   //link is a data member which is a pointer 
 	   //to an object of the same type (i.e. Node)
+	   
+	   Node()//default contructor
+	   {
+		   data = 0;
+		   link = nullptr;
+	   }
+	   
+	   Node(int new_data)//an overloaded constructor
+	   {
+		   data = new_data;
+		   link = nullptr;
+	   }
+	   
+	   Node(int new_data, Node* new_link)//another overloaded constructor
+	   {
+		   data = new_data;
+		   link = nullptr;
+	   }
 	
 	};//end Node class definition (can only be seen by the List class)
 
+List::List()
+{
+	frontPtr = nullptr;
+	num_elements = 0;
+}
 
 List::~List()
 {
@@ -93,3 +116,10 @@ void List::remove(int k)
 	
 	//Implementations of missing operations
 	
+	void List::display()
+	{
+		for (Node* curPtr = frontPtr; curPtr != nullptr; curPtr = curPtr->link)
+		{
+			cout << curPtr ->data << " ";
+		}
+	}
